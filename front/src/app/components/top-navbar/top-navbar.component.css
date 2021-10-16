@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@500&display=swap');
+
+mat-toolbar{
+  background-color: #EDDECF;
+  box-sizing:border-box;
+  padding: 10px;
+  height: max-content;
+}
+
+.kiwi{
+  font-family: 'Kiwi Maru', serif;
+}
+
+.title{
+  font-size: 48px;
+}
+
+.space {
+  flex: 1 1 auto;
+} 
+.button-row{
+  display:flex;
+  margin-left: 30px;
+}
+
+.button-row button{
+  font-size: 18px;
+}
+
+.person-icon {
+  background-color: #EEC5B7;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  outline:none;
+  
+}
+
+.person-icon mat-icon{
+  font-size: 40px;
+}
+
+mat-button{
+  margin: 0 15px;
+}
+
+mat-icon {
+  color:white;
+}
