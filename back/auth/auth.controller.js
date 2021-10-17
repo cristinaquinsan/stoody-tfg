@@ -14,16 +14,19 @@ exports.createUser = (req, res) => {
 
     User.create(newUser, (err, user) => {
         if (err && err.code === 11000) return res.status(409).send('Email already exists');
-        if (err) return res.status(500).send("Server error");
-        const expiration = 24 * 60 * 60;
-        const accessToken = jwt.sign({ id: user.id }, SECRET_KEY, { expiration: expiration });
+        if (err) {
+            console.log(err); 
+            return res.status(500).send("Server error");
+        }
+        const expiresIn = 24 * 60 * 60;
+        const accessToken = jwt.sign({ id: user.id }, SECRET_KEY, { expiresIn: expiresIn });
         const dataUser = {
             name: user.name,
             email: user.email,
-            motherlang:motherlang,
-            studlangs: studlangs,
+            motherlang: user.motherlang,
+            studlangs: user.studlangs,
             accessToken: accessToken,
-            expiration: expiration
+            expiresIn: expiresIn
         }
 
         res.send({dataUser})
@@ -36,18 +39,21 @@ exports.loginUser = (req, res) => {
         passwd: req.body.passwd
     }
     User.findOne({ email: userData.email }, (err, user) => {
-        if (err) return res.status(500).send("Server error");
+        if (err) {
+            console.log(err); 
+            return res.status(500).send("Server error");
+        }
         if (!user) return res.status(409).send("Something is wrong");
         else {
             const passwdUncrypted = bcrypt.compareSync(userData.passwd, user.passwd);
             if (passwdUncrypted) {
-                const expiration = 24 * 60 * 60;
-                const accessToken = jwt.sign({ id: user.id }, SECRET_KEY, { expiration: expiration });
+                const expiresIn = 24 * 60 * 60;
+                const accessToken = jwt.sign({ id: user.id }, SECRET_KEY, { expiresIn: expiresIn });
                 const dataUser = {
                     username: user.username,
                     email: user.email,
                     accessToken: accessToken,
-                    expiration: expiration
+                    expiresIn: expiresIn
                 }
                 res.send({dataUser})
             }
