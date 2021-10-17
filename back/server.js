@@ -1,4 +1,5 @@
 'use strict'
+const cors = require('cors');
 const authRoutes = require('./auth/auth.routes');
 const express = require('express');
 const properties = require('./config/properties');
@@ -10,6 +11,7 @@ const app = express();
 const router = express.Router();
 
 app.use(express.json());
+app.use(cors());
 //app.use(express.urlencoded());
 app.use('/api', router);
 
