@@ -27,6 +27,18 @@
     align-items: baseline;
 }
 
+.flexForm{
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 auto;
+    justify-content: space-evenly;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding: 15px;
+    border-radius: 15px;
+    align-items: baseline;
+}
+
 
 .fillform{
     display:flex;
