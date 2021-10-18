@@ -2,7 +2,7 @@
     <div class="space"></div>
     <div class="container">
         <h3 class="kiwi center">Sign Up</h3>
-        <form class="flexForm">
+        <form class="flexForm" #signupForm="ngForm" (ngSubmit)="onSignUp(signupForm)">
             <div class="formData">
                 <div class="fillform">
                     <label class="kiwi">Account Information</label>
@@ -11,25 +11,25 @@
                         <mat-icon inline=true>face</mat-icon> Username
                     </mat-label>
                     <mat-form-field class="textform" appearance="fill">
-                        <input matInput name="email" required>
+                        <input matInput name="username" ngModel required>
                     </mat-form-field>
                     <mat-label class="margin kiwi">
                         <mat-icon inline=true>email</mat-icon> Email
                     </mat-label>
                     <mat-form-field class="textform" appearance="fill">
-                        <input matInput name="email" required>
+                        <input matInput name="email" ngModel required>
                     </mat-form-field>
                     <mat-label class="margin kiwi">
                         <mat-icon inline=true>password</mat-icon> Password
                     </mat-label>
                     <mat-form-field class="textform" appearance="fill">
-                        <input matInput type="password">
+                        <input matInput type="password" name="passwd" ngModel required>
                     </mat-form-field>
                     <mat-label class="margin kiwi">
                         <mat-icon inline=true>password</mat-icon> Repeat password
                     </mat-label>
                     <mat-form-field class="textform" appearance="fill">
-                        <input matInput type="password">
+                        <input matInput type="password" name="vPasswd" required>
                     </mat-form-field>
                 </div>
                 <div class="space"></div>
@@ -37,20 +37,19 @@
                     <label class="kiwi">Language Information</label>
                     <mat-divider></mat-divider>
                     <mat-label class="kiwi">Mother Tongue</mat-label>
-                    <mat-form-field id="mothert" appearance="fill">
-                        <mat-select name="mothert" required disableOptionCentering>
-                            <mat-option *ngFor="let mothert of languageList" [value]="mothert" class="kiwi">
-                                {{mothert.name}}
+                    <mat-form-field id="mother" appearance="fill">
+                        <mat-select name="motherlang" required ngModel disableOptionCentering>
+                            <mat-option *ngFor="let motherlang of languageList" [value]="motherlang" class="kiwi">
+                                {{motherlang}}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="mothert.hasError('required')">Please choose a mother tongue</mat-error>
-                        <mat-hint class="kiwi">{{mothert.value?.greet}}</mat-hint>
+                        <mat-error *ngIf="motherlang.hasError('required')">Please choose a mother tongue</mat-error>
                     </mat-form-field>
                     <mat-label class="kiwi">Choose the language(s) you are studying.</mat-label>
                     <mat-form-field appearance="fill">
-                        <mat-select name="languages" multiple required disableOptionCentering>
-                            <mat-option *ngFor="let language of languageList" [value]="language" class="kiwi">
-                                {{language.name}}</mat-option>
+                        <mat-select name="studlangs" multiple ngModel required disableOptionCentering>
+                            <mat-option *ngFor="let studlangs of languageList" [value]="studlangs" class="kiwi">
+                                {{studlangs}}</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>

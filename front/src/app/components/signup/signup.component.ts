@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
-
-interface Language {
-  name: string;
-  greet: string;
-}
+import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { UserI } from '../../models/user';
 
 @Component({
   selector: 'app-signup',
@@ -14,22 +12,15 @@ interface Language {
 export class SignupComponent implements OnInit {
   hide = true;
   email = new FormControl('', [Validators.required, Validators.email]);
-  languages = new FormControl();
-  mothert = new FormControl('', Validators.required);
-  languageList: Language[] = [
-    {name: 'Mandarin Chinese', greet: '你好!'},
-    {name: 'Spanish', greet: '¡Hola!'},
-    {name: 'English', greet: 'Hi!'},
-    {name: 'German', greet: 'Hallo!'},
-    {name: 'Portugesse', greet: 'Olá!'},
-    {name: 'Arabic', greet: '!مرحبا'},
-    {name: 'Russian', greet: 'Привет!'},
-    {name: 'Japanese', greet: 'こんにちは!'},
-    {name: 'Korean', greet: '안녕하세요!'},
-  ];
-  constructor() { }
+  motherlang = new FormControl();
+  studlangs = new FormControl('', Validators.required);
+  languageList: string[] = ['Mandarin Chinese', 'Spanish', 'English','German', 'Portugesse', 'Arabic', 'Russian', 'Japanese', 'Korean'];
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
+    if(this.authService.isLoggedIn===true){
+      this.router.navigateByUrl('/mainPage');
+    }
   }
 
   getErrorMessage() {
@@ -38,6 +29,13 @@ export class SignupComponent implements OnInit {
     }
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
+  }
+
+  onSignUp(form): void{
+    console.log(form.value);
+    this.authService.signup(form.value).subscribe(res => {
+      this.router.navigateByUrl('/mainPage');
+    })
   }
 
 
