@@ -2,7 +2,7 @@
     <div class="space"></div>
     <div class="container">
         <h3 class="kiwi center">Log In</h3>
-        <form class="fillform">
+        <form class="fillform" #loginForm="ngForm" (ngSubmit)="onLogIn(loginForm)">
             <mat-label class="margin kiwi">
                 <mat-icon inline=true>email</mat-icon> Email
             </mat-label>

@@ -15,6 +15,9 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
+    if(this.authService.isLoggedIn===true){
+      this.router.navigateByUrl('/mainPage');
+    }
   }
 
   getErrorMessage() {
@@ -23,6 +26,13 @@ export class LoginComponent implements OnInit {
     }
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
+  }
+
+  onLogIn(form): void{
+    console.log(form.value);
+    this.authService.login(form.value).subscribe(res => {
+      this.router.navigateByUrl('/mainPage');
+    })
   }
 
 }
