@@ -34,6 +34,7 @@ export class SignupComponent implements OnInit {
   onSignUp(form): void{
     console.log(form.value);
     this.authService.signup(form.value).subscribe(res => {
+      this.authService.isLoggedIn = true;
       this.router.navigateByUrl('/mainPage');
     })
   }

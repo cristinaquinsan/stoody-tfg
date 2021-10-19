@@ -30,6 +30,7 @@ export class AuthService {
       .pipe(tap((res: JwtResponseI) => {
           if (res) {
             this.isLoggedIn = true;
+            console.log("0.", this.isLoggedIn);
             this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
           }
         }
