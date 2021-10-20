@@ -25,6 +25,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoggedUserFrontpageComponent } from './components/logged-user-frontpage/logged-user-frontpage.component';
+import { UnitListComponent } from './unit-list/unit-list.component';
+import { LanguageListComponent } from './components/language-list/language-list.component';
+import { StudyZoneComponent } from './components/study-zone/study-zone.component';
+import { UnitCreationComponent } from './components/unit-creation/unit-creation.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,11 @@ import { LoggedUserFrontpageComponent } from './components/logged-user-frontpage
     LoginComponent,
     UnloggedUserFrontpageComponent,
     FooterComponent,
-    LoggedUserFrontpageComponent
+    LoggedUserFrontpageComponent,
+    UnitListComponent,
+    LanguageListComponent,
+    StudyZoneComponent,
+    UnitCreationComponent
   ],
   imports: [
     BrowserModule,
