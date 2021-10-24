@@ -1,37 +1,37 @@
 <mat-toolbar>
-    <span class="title kiwi" routerLink="/">STOODY</span>
-    <div class="button-row">
-        <button *ngIf="logged" mat-button class="kiwi" routerLink="/">Homepage</button>
-        <button *ngIf="logged" mat-button class="kiwi">My Units</button>
-        <button *ngIf="logged" mat-button class="kiwi">Language Folders</button>
-    </div>
-    <span class="space"></span>
-        <button mat-icon-button [matMenuTriggerFor]="menu" class="person-icon" aria-label="User icon">
-            <mat-icon inline=true>person</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-            <!--Sin log in-->
-            <button *ngIf="!logged" mat-menu-item routerLink="/signup">
-                <mat-icon>app_registration</mat-icon>
-                <span class="kiwi">Sign Up</span>
-            </button>
-            <button *ngIf="!logged" mat-menu-item routerLink="/login">
-                <mat-icon>login</mat-icon>
-                <span class="kiwi">Log In</span>
-            </button>
-            <!-- Para logueo hecho-->
-            <button *ngIf="logged" mat-menu-item>
-            <mat-icon>manage_accounts</mat-icon>
-            <span class="kiwi">Profile Settings</span>
-          </button>
-          <button *ngIf="logged" mat-menu-item>
-            <mat-icon>settings</mat-icon>
-            <span class="kiwi">Language Settings</span>
-          </button>
-          <button *ngIf="logged" mat-menu-item routerLink="/">
-            <mat-icon>logout</mat-icon>
-            <span class="kiwi">Log Out</span>
-          </button>
-        <!---->
-        </mat-menu>
+  <span class="title kiwi" routerLink="/">STOODY</span>
+  <div class="button-row">
+    <button *ngIf="isLoggedin" mat-button class="kiwi" routerLink="/">Homepage</button>
+    <button *ngIf="isLoggedin" mat-button class="kiwi" routerLink="/myUnits">My Units</button>
+    <button *ngIf="isLoggedin" mat-button class="kiwi" routerLink="/myLanguages">Language Folders</button>
+  </div>
+  <span class="space"></span>
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="person-icon" aria-label="User icon">
+    <mat-icon inline=true>person</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <!--Sin log in-->
+    <button *ngIf="!isLoggedin" mat-menu-item routerLink="/signup">
+      <mat-icon>app_registration</mat-icon>
+      <span class="kiwi">Sign Up</span>
+    </button>
+    <button *ngIf="!isLoggedin" mat-menu-item routerLink="/login">
+      <mat-icon>login</mat-icon>
+      <span class="kiwi">Log In</span>
+    </button>
+    <!-- Para logueo hecho-->
+    <button *ngIf="isLoggedin" mat-menu-item>
+      <mat-icon>manage_accounts</mat-icon>
+      <span class="kiwi">Profile Settings</span>
+    </button>
+    <button *ngIf="isLoggedin" mat-menu-item>
+      <mat-icon>settings</mat-icon>
+      <span class="kiwi">Language Settings</span>
+    </button>
+    <button *ngIf="isLoggedin" mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span class="kiwi">Log Out</span>
+    </button>
+    <!---->
+  </mat-menu>
 </mat-toolbar>

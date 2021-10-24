@@ -1,1 +1,45 @@
-<p>unit-creation works!</p>
+<div class="space"></div>
+<div class="container">
+    <div class="addWord">
+        <form>
+            <div class="wordForm">
+                <mat-label class="margin kiwi"> Front </mat-label>
+                <mat-form-field appearance="fill">
+                    <input matInput name="front" ngModel required>
+                </mat-form-field>
+                <mat-label class="margin kiwi"> Back </mat-label>
+                <mat-form-field appearance="fill">
+                    <input matInput name="back" ngModel required>
+                </mat-form-field>
+                <mat-label class="margin kiwi"> Hint </mat-label>
+                <mat-form-field appearance="fill">
+                    <input matInput name="hint" ngModel>
+                </mat-form-field>
+            </div>
+            <div class="buttons">
+                <button mat-raised-button color="accent" class="kiwi">
+                    Add word
+                </button>
+                <button mat-raised-button color="accent" class="kiwi">
+                    Save unit
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="wordList">
+        <!--ngIf si la length > 0 ir escribiendo la palabra que se meta en el JSON-->
+        <table mat-table>
+            <ng-container>
+                <!--ngFor-->
+                <th mat-header-cell *matHeaderCellDef>
+                    Pruebita
+                </th>
+                <td mat-cell *matCellDef>
+
+                </td>
+            </ng-container>
+
+        </table>
+    </div>
+</div>
+<div class="space"></div>

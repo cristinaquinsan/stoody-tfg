@@ -40,8 +40,8 @@ export class AuthService {
   logout(): void {
     this.isLoggedIn = false;
     this.token = '';
-    localStorage.remove("ACCESS_TOKEN");
-    localStorage.remove("EXPIRES_IN");
+    localStorage.removeItem("ACCESS_TOKEN");
+    localStorage.removeItem("EXPIRES_IN");
   }
 
   private saveToken(token: string, expiresIn: string): void {

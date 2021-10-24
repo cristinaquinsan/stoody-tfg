@@ -12,6 +12,13 @@ import { TopNavbarComponent } from './components/top-navbar/top-navbar.component
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { UnloggedUserFrontpageComponent } from './components/unlogged-user-frontpage/unlogged-user-frontpage.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { LoggedUserFrontpageComponent } from './components/logged-user-frontpage/logged-user-frontpage.component';
+import { UnitListComponent } from './components/unit-list/unit-list.component';
+import { LanguageListComponent } from './components/language-list/language-list.component';
+import { StudyZoneComponent } from './components/study-zone/study-zone.component';
+import { UnitCreationComponent } from './components/unit-creation/unit-creation.component';
+import { ProfileSettingsComponent } from './components/settings/profile-settings/profile-settings.component';
 
 /** ANGULAR MATERIAL */
 
@@ -23,12 +30,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
-import { FooterComponent } from './components/footer/footer.component';
-import { LoggedUserFrontpageComponent } from './components/logged-user-frontpage/logged-user-frontpage.component';
-import { UnitListComponent } from './unit-list/unit-list.component';
-import { LanguageListComponent } from './components/language-list/language-list.component';
-import { StudyZoneComponent } from './components/study-zone/study-zone.component';
-import { UnitCreationComponent } from './components/unit-creation/unit-creation.component';
+import { MatTableModule } from '@angular/material/table'
 
 @NgModule({
   declarations: [
@@ -42,24 +44,26 @@ import { UnitCreationComponent } from './components/unit-creation/unit-creation.
     UnitListComponent,
     LanguageListComponent,
     StudyZoneComponent,
-    UnitCreationComponent
+    UnitCreationComponent,
+    ProfileSettingsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
+    CommonModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule,
-    CommonModule,
-    HttpClientModule,
-    ReactiveFormsModule,
     MatDividerModule,
     MatSelectModule,
+    MatTableModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

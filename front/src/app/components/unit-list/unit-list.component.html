@@ -1,1 +1,44 @@
-<p>unit-list works!</p>
+<div class="space"></div>
+<div class="container">
+    <div class="top-row">
+        <h3>My Units</h3>
+        <button mat-button>
+            <mat-icon>add</mat-icon> Add unit
+        </button>
+    </div>
+    <div class="units">
+        <!--ngFor unit from units by id-->
+        <div class="unit">
+            <div class="left-column">
+                <h4>Name of the unit</h4>
+                <div class="unit-info">
+                    <p>Number of words: 34</p>
+                    <p>Language: English</p>
+                </div>
+            </div>
+            <div class="right-column">
+                <div class="study-buttons">
+                    <button mat-raised-button color="primary">Study this unit</button>
+                    <button mat-raised-button color="primary">Fast test</button>
+                </div>
+                <div class="setting-button">
+                    <div class="space"></div>
+                    <button mat-icon-button [matMenuTriggerFor]="unitMenu">
+                        <mat-icon>more_horiz</mat-icon>
+                    </button>
+                    <mat-menu #unitMenu="matMenu">
+                        <button mat-menu-item>
+                            <mat-icon>edit</mat-icon>
+                            <span>Edit unit</span>
+                        </button>
+                        <button mat-menu-item>
+                            <mat-icon>delete</mat-icon>
+                            <span>Delete unit</span>
+                        </button>
+                    </mat-menu>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="space"></div>

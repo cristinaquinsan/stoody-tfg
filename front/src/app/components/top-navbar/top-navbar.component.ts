@@ -8,21 +8,21 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./top-navbar.component.css']
 })
 export class TopNavbarComponent implements OnInit {
-  logged = false;
-
+  isLoggedin;
   constructor(private router: Router, private authService: AuthService) {
-    console.log("1.", this.logged);
+    this.isLoggedin = false;
   }
 
   ngOnInit(): void {
-    console.log("2.", this.logged);
+    console.log("2.", this.isLoggedin);
     this.router.events.subscribe(event => {
-      if (event.constructor.name === "NavigationEnd") {
-        this.logged = this.authService.isLoggedIn;
-        console.log(this.logged)
-      }
+        this.isLoggedin = this.authService.isLoggedIn;
     })
-    console.log("3.", this.logged);
+  }
+
+  logout():void{
+    this.authService.logout();
+    this.router.navigateByUrl('/');
   }
 
 }

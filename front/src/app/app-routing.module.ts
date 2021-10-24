@@ -4,11 +4,20 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { UnloggedUserFrontpageComponent } from './components/unlogged-user-frontpage/unlogged-user-frontpage.component';
 import { LoggedUserFrontpageComponent } from './components/logged-user-frontpage/logged-user-frontpage.component';
+import { UnitListComponent } from './components/unit-list/unit-list.component';
+import { LanguageListComponent } from './components/language-list/language-list.component';
+import { UnitCreationComponent } from './components/unit-creation/unit-creation.component';
+import { StudyZoneComponent } from './components/study-zone/study-zone.component';
+
 const routes: Routes = [
   { path: '', component: UnloggedUserFrontpageComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'mainPage', component: LoggedUserFrontpageComponent }
+  { path: 'mainPage', component: LoggedUserFrontpageComponent },
+  { path: 'myUnits', component: UnitListComponent},
+  { path: 'myLanguages', component: LanguageListComponent},
+  { path: 'newUnit', component: UnitCreationComponent},
+  { path: 'studyZone', component: StudyZoneComponent},
 ];
 
 @NgModule({
