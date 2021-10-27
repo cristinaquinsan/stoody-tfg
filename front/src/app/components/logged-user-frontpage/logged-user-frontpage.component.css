@@ -1,0 +1,63 @@
+.logged{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+.space {
+    flex: 1 1 auto;
+}
+
+.kiwi {
+    font-family: 'Kiwi Maru', serif;
+}
+
+.container{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex: 1 1 auto;
+    margin-top: 25px;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.top-row{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 25px;
+
+}
+
+.person-icon {
+    background-color: #EEC5B7;
+    color: white;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    outline:none;
+}
+  
+.person-icon mat-icon{
+    font-size: 140px;
+    text-align: center;
+}
+
+.bottom-row{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.unit{
+    background-color: #EFEFEF;
+    padding: 15px;
+    margin: 0px 10px;
+}
+
+.setting-button{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}

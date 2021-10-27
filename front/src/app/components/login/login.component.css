@@ -11,12 +11,12 @@
     flex: 2 1 auto;
 }
 
-.margin{
-    margin-bottom: 5px;
-}
-
 .kiwi {
     font-family: 'Kiwi Maru', serif;
+}
+
+.margin{
+    margin-bottom: 5px;
 }
 
 .center {

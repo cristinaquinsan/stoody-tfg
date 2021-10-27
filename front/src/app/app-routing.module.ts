@@ -8,6 +8,7 @@ import { UnitListComponent } from './components/unit-list/unit-list.component';
 import { LanguageListComponent } from './components/language-list/language-list.component';
 import { UnitCreationComponent } from './components/unit-creation/unit-creation.component';
 import { StudyZoneComponent } from './components/study-zone/study-zone.component';
+import { UnitViewComponent } from './components/unit-view/unit-view.component';
 
 const routes: Routes = [
   { path: '', component: UnloggedUserFrontpageComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'myLanguages', component: LanguageListComponent},
   { path: 'newUnit', component: UnitCreationComponent},
   { path: 'studyZone', component: StudyZoneComponent},
+  { path: 'unitView', component: UnitViewComponent}
 ];
 
 @NgModule({

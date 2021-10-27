@@ -31,6 +31,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table'
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { UnitViewComponent } from './components/unit-view/unit-view.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { MatTableModule } from '@angular/material/table'
     LanguageListComponent,
     StudyZoneComponent,
     UnitCreationComponent,
-    ProfileSettingsComponent
+    ProfileSettingsComponent,
+    UnitViewComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,8 @@ import { MatTableModule } from '@angular/material/table'
     MatInputModule,
     MatDividerModule,
     MatSelectModule,
-    MatTableModule
+    MatTableModule,
+    MatTooltipModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
