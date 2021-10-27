@@ -5,7 +5,7 @@
 }
 
 .space {
-    flex: 2 1 auto;
+    flex: 1 1 auto;
 }
 
 .kiwi {
@@ -17,8 +17,47 @@
     flex-direction: column;
     justify-content: space-around;
     flex: 1 1 auto;
-    background-color: #EFEFEF;
     margin-top: 25px;
     padding: 15px;
+}
+
+.top-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.units{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+.unit{
+    background-color: #EFEFEF;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     border-radius: 15px;
+    padding: 8px;
+}
+
+.right-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: flex-end;
+}
+
+.study-buttons{
+    display: flex;
+}
+.setting-button{
+    display: flex;
+    flex-direction: row;
+}
+
+.margin5{
+    margin: 0 5px;
 }

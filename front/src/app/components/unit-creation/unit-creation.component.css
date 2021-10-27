@@ -22,3 +22,14 @@
     padding: 15px;
     border-radius: 15px;
 }
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.margin5{
+    margin: 0px 5px;
+}

@@ -19,14 +19,13 @@
     flex: 1 1 auto;
     margin-top: 25px;
     padding: 15px;
-    border-radius: 15px;
 }
 
 .top-row{
     display: flex;
     flex-direction: row;
     margin-bottom: 25px;
-
+    
 }
 
 .person-icon {
@@ -38,7 +37,7 @@
     overflow: hidden;
     outline:none;
 }
-  
+
 .person-icon mat-icon{
     font-size: 140px;
     text-align: center;
@@ -54,6 +53,7 @@
     background-color: #EFEFEF;
     padding: 15px;
     margin: 0px 10px;
+    border-radius: 15px;
 }
 
 .setting-button{
