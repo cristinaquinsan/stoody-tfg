@@ -1,3 +1,9 @@
+.studyzone{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .space {
     flex: 2 1 auto;
 }

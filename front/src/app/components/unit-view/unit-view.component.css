@@ -1,0 +1,24 @@
+.unitview{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.space {
+    flex: 2 1 auto;
+}
+
+.kiwi {
+    font-family: 'Kiwi Maru', serif;
+}
+
+.container{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex: 1 1 auto;
+    background-color: #EFEFEF;
+    margin-top: 25px;
+    padding: 15px;
+    border-radius: 15px;
+}
