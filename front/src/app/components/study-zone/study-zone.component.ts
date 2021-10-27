@@ -10,11 +10,19 @@ import { AuthService } from 'src/app/services/auth.service';
 export class StudyZoneComponent implements OnInit {
 
   constructor(private router: Router, private authService: AuthService) { }  
-
+  hint= false; back= false;
   ngOnInit(): void {
     if(this.authService.isLoggedIn===false){
       this.router.navigateByUrl('/login');
     }
+  }
+
+  showHint():void{
+    this.hint = true;
+  }
+
+  showBack():void{
+    this.back = true;
   }
 
 }

@@ -2,21 +2,25 @@
     <div class="space"></div>
     <div class="container">
         <div class="front-and-hint">
-
+            <p>Front word</p>
         </div>
         <div class="hint-done-buttons">
-
+            <div class="buttons">
+                <button mat-raised-button color="accent" class="kiwi" (click)="showHint()">Hint</button>
+                <button mat-raised-button color="accent" class="kiwi" (click)="showBack()">Done</button>
+            </div>
+            <p *ngIf="hint" class="kiwi"> Here is your hint </p>
         </div>
-        <p class="back">
-            <!--ngIf done-->
-        </p>
-        <div class="feedback-buttons">
-            <button mat-raised-button color="accent" matTooltip="The word will be shown again in 3 days"
-                class="kiwi">Good</button>
-            <button mat-raised-button color="accent" matTooltip="The word will be shown again in a day"
-                class="kiwi">Sort of</button>
-            <button mat-raised-button color="accent" matTooltip="The word will be shown again soon"
-                class="kiwi">Bad</button>
+        <div class="back" *ngIf="back">
+            <p class="kiwi"> Here is your back </p>
+            <div class="feedback-buttons">
+                <button mat-raised-button color="accent" matTooltip="The word will be shown again in 3 days"
+                    class="kiwi">Good</button>
+                <button mat-raised-button color="accent" matTooltip="The word will be shown again in a day"
+                    class="kiwi">Sort of</button>
+                <button mat-raised-button color="accent" matTooltip="The word will be shown again soon"
+                    class="kiwi">Bad</button>
+            </div>
         </div>
     </div>
     <div class="space"></div>
