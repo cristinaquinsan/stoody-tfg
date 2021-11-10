@@ -21,10 +21,10 @@
                 </div>
                 <div class="buttons">
                     <div class="space"></div>
-                    <button mat-raised-button color="accent" class="kiwi margin5">
+                    <button mat-raised-button color="accent" class="kiwi margin5" (click)="addWord()">
                         Add word
                     </button>
-                    <button mat-raised-button color="accent" class="kiwi">
+                    <button mat-raised-button color="accent" class="kiwi" (click)="addUnit()">
                         Save unit
                     </button>
                 </div>
@@ -36,7 +36,7 @@
                 <ng-container>
                     <!--ngFor-->
                     <th mat-header-cell *matHeaderCellDef>
-
+                        
                     </th>
                     <td mat-cell *matCellDef>
 

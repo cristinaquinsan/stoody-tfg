@@ -17,4 +17,14 @@ export class UnitCreationComponent implements OnInit {
     }
   }
 
+  addWord():void{
+    console.log("Clicked on add word");
+  }
+
+  addUnit():void{
+    console.log("Clicked on add unit");
+    //Guardar la unidad
+    this.router.navigateByUrl('/mainPage');
+  }
+
 }
