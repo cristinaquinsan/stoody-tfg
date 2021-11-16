@@ -81,12 +81,14 @@ export class AuthService {
     return this.httpClient.post(`${this.AUTH_SERVER}/units`, unit)
   }
 
-  editUnit(unit: UnitI){
+  /*editUnit(unit: UnitI){
     return this.httpClient.post(`${this.AUTH_SERVER}/units`, unit)
-  }
+  }*/
 
   deleteUnit(unitid){
     return this.httpClient.delete(`${this.AUTH_SERVER}/units/${unitid}`)
   }
+
+  /** CRUD words? */
 
 }

@@ -33,6 +33,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table'
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { UnitViewComponent } from './components/unit-view/unit-view.component';
+import { AddingWordComponent } from './components/adding-word/adding-word.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { UnitViewComponent } from './components/unit-view/unit-view.component';
     StudyZoneComponent,
     UnitCreationComponent,
     ProfileSettingsComponent,
-    UnitViewComponent
+    UnitViewComponent,
+    AddingWordComponent
   ],
   imports: [
     BrowserModule,

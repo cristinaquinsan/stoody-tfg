@@ -12,6 +12,10 @@ const wordSchema = new Schema({
         required: true,
         trim: true
     },
+    hint:{
+        type: String,
+        trim: true
+    },
     unitid: {
         type: mongoose.Types.ObjectId,
         required: true,

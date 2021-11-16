@@ -1,0 +1,44 @@
+<div class="addWordContainer">
+    <div class="addWord">
+        <form #wordForm="ngForm" (ngSubmit)="addWord(wordForm)">
+            <div class="wordForm">
+                <div class="front-back">
+                    <mat-label class="margin kiwi"> Front </mat-label>
+                    <mat-form-field appearance="fill">
+                        <input matInput name="front" ngModel required>
+                    </mat-form-field>
+                    <mat-label class="margin kiwi"> Back </mat-label>
+                    <mat-form-field appearance="fill">
+                        <input matInput name="back" ngModel required>
+                    </mat-form-field>
+                </div>
+                <mat-label class="margin kiwi"> Hint </mat-label>
+                <mat-form-field appearance="fill">
+                    <input matInput name="hint" ngModel>
+                </mat-form-field>
+            </div>
+            <div class="buttons">
+                <div class="space"></div>
+                <button mat-raised-button color="accent" class="kiwi margin5">
+                    Add word
+                </button>
+                <!---->
+            </div>
+        </form>
+    </div>
+    <div class="wordList">
+        <!--ngIf si la length > 0 ir escribiendo la palabra que se meta en el JSON-->
+        <table mat-table>
+            <ng-container>
+                <!--ngFor-->
+                <th mat-header-cell *matHeaderCellDef>
+
+                </th>
+                <td mat-cell *matCellDef>
+
+                </td>
+            </ng-container>
+
+        </table>
+    </div>
+</div>
