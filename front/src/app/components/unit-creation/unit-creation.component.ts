@@ -9,12 +9,17 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class UnitCreationComponent implements OnInit {
 
-  constructor(private router: Router, private authService: AuthService) { }
-
+  userLang;
+  constructor(private router: Router, private authService: AuthService) { 
+  }
+  
+  
   ngOnInit(): void {
     if(this.authService.isLoggedIn===false){
       this.router.navigateByUrl('/login');
     }
+    this.userLang = this.authService.getLang();
+    console.log(this.userLang)
   }
 
 
@@ -23,5 +28,7 @@ export class UnitCreationComponent implements OnInit {
     //Guardar la unidad
     this.router.navigateByUrl('/mainPage');
   }
+
+  
 
 }

@@ -4,7 +4,6 @@ import { UserI } from '../models/user';
 import { JwtResponseI } from '../models/jwt-response';
 import { tap } from 'rxjs/operators';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { UnitI } from '../models/unit';
 
 @Injectable()
 export class AuthService {
@@ -13,6 +12,7 @@ export class AuthService {
   private token: string;
   isLoggedIn = false;
   username: string;
+  userslanguages;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -25,6 +25,7 @@ export class AuthService {
           if (res) {
             this.isLoggedIn = true;
             this.username = res.dataUser.username;
+            this.userslanguages = res.dataUser.studlangs;
             this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
           }
         }
@@ -37,6 +38,7 @@ export class AuthService {
           if (res) {
             this.isLoggedIn = true;
             this.username = res.dataUser.username;
+            this.userslanguages = res.dataUser.studlangs;
             this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
           }
         }
@@ -67,28 +69,8 @@ export class AuthService {
     return this.username;
   }
 
-  /** CRUD Units methods */
-
-  getUnits(){
-    return this.httpClient.get(`${this.AUTH_SERVER}/units`);
+  getLang() {
+    return this.userslanguages;
   }
-
-  getUnit(unitid){
-    return this.httpClient.get(`${this.AUTH_SERVER}/units/${unitid}`);
-  }
-  
-  newUnit(unit: UnitI){
-    return this.httpClient.post(`${this.AUTH_SERVER}/units`, unit)
-  }
-
-  /*editUnit(unit: UnitI){
-    return this.httpClient.post(`${this.AUTH_SERVER}/units`, unit)
-  }*/
-
-  deleteUnit(unitid){
-    return this.httpClient.delete(`${this.AUTH_SERVER}/units/${unitid}`)
-  }
-
-  /** CRUD words? */
 
 }

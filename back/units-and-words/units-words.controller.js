@@ -34,15 +34,20 @@ module.exports.newUnit = (req, res) => {
         words: req.body.words
     }
 
-    newUnit.save()
-        .then((unit) => {
-            console.log(unit)
-            res.send(unit);
-        }).catch((e) => {
-            console.log(e);
-            return res.status(500).send("Server error + ", e);
-        })
-
+    Unit.create(newUnit, (err, unit) =>{
+        if (err) {
+            console.log(err); 
+            return res.status(500).send("Server error + ", err);
+        }
+        const dataUnit = {
+            unitname: unit.unitname,
+            username: unit.username,
+            language: unit.language,
+            words: unit.words
+        }
+        res.send(dataUnit);
+    })
+    
 }
 
 /*module.exports.editUnit = (req, res) => {
@@ -90,7 +95,7 @@ module.exports.newWord = (req, res) => {
     const newWord = {
         front: req.body.front,
         back: req.body.back,
-        unitid: req.body.unitid,
+        hint: req.body.hint,
         feedback: req.body.feedback
     }
 

@@ -3,8 +3,17 @@
     <div class="container">
         <form #unitForm="ngForm" (ngSubmit)="addUnit(unitForm)">
             <!--Aquí meter el form para la unidad en sí-->
+            <mat-form-field appearance="fill">
+                <mat-label>Unit's name</mat-label>
+                <input name="unitname" matInput ngModel required>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Select</mat-label>
+                <mat-select name="language" ngModel required disableOptionCentering>
+                  <mat-option *ngFor="let language of userLang" [value]="language">{{language}}</mat-option>
+                </mat-select>
+              </mat-form-field>
             <app-adding-word></app-adding-word>
-            <p>pruebita</p>
             <!--Aquí meter el botón que lo lleve todo a la bbdd-->
             <button mat-raised-button color="accent" class="kiwi">
                 Save unit

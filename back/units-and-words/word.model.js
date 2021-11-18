@@ -16,11 +16,6 @@ const wordSchema = new Schema({
         type: String,
         trim: true
     },
-    unitid: {
-        type: mongoose.Types.ObjectId,
-        required: true,
-        trim: true
-    },
     feedback: {
         type: Number,
         required: true,

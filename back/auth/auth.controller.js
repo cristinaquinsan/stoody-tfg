@@ -52,6 +52,7 @@ exports.loginUser = (req, res) => {
                 const dataUser = {
                     username: user.username,
                     email: user.email,
+                    studlangs: user.studlangs,
                     accessToken: accessToken,
                     expiresIn: expiresIn
                 }
