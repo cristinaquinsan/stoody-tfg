@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { WordI } from 'src/app/models/word';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-adding-word',
   templateUrl: './adding-word.component.html',
@@ -7,20 +9,25 @@ import { WordI } from 'src/app/models/word';
 })
 export class AddingWordComponent implements OnInit {
 
-  words:Array<WordI>;
+  words:WordI[] = [];
 
-  constructor() { }
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
+    if(this.authService.isLoggedIn===false){
+      this.router.navigateByUrl('/mainPage');
+    }
   }
 
   addWord(form):void{
-    console.log("Clicked on add word");
-    this.getWords();
+    console.log(form.value);
+    this.words.push(form.value);
+    console.log(this.words)
+    //this.getWords();
   }
 
-  getWords(): Array<WordI> {
+  /*getWords(): Array<WordI> {
     return this.words;
-  }
+  }*/
 
 }

@@ -22,7 +22,7 @@ export class LanguageListComponent implements OnInit {
   }
 
   getLanguages(){
-    return this.authService.userslanguages;
+    this.langlist = this.authService.userslanguages;
   }
 
 }
