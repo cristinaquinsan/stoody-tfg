@@ -19,6 +19,8 @@ import { LanguageListComponent } from './components/language-list/language-list.
 import { StudyZoneComponent } from './components/study-zone/study-zone.component';
 import { UnitCreationComponent } from './components/unit-creation/unit-creation.component';
 import { ProfileSettingsComponent } from './components/settings/profile-settings/profile-settings.component';
+import { UnitViewComponent } from './components/unit-view/unit-view.component';
+import { AddingWordComponent } from './components/adding-word/adding-word.component';
 
 /** ANGULAR MATERIAL */
 
@@ -32,8 +34,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table'
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { UnitViewComponent } from './components/unit-view/unit-view.component';
-import { AddingWordComponent } from './components/adding-word/adding-word.component';
 
 @NgModule({
   declarations: [

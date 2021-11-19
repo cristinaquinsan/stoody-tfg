@@ -12,11 +12,17 @@ const langList: string[] = ['Mandarin Chinese', 'Spanish', 'English','German', '
 export class LanguageListComponent implements OnInit {
 
   constructor(private router: Router, private authService: AuthService) { }
-
+  langlist;
   ngOnInit(): void {
     if (this.authService.isLoggedIn === false) {
       this.router.navigateByUrl('/login');
     }
+    this.getLanguages();
+    console.log(this.langlist)
+  }
+
+  getLanguages(){
+    return this.authService.userslanguages;
   }
 
 }

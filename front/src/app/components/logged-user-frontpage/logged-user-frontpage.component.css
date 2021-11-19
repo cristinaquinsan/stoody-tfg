@@ -45,6 +45,11 @@
 
 .bottom-row{
     display: flex;
+    flex-direction: column;
+}
+
+.units{
+    display: flex;
     flex-wrap: wrap;
     flex-direction: row;
 }

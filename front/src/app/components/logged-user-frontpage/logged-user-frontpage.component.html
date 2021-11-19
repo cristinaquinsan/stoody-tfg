@@ -8,31 +8,34 @@
             <p> Welome to your page {{username}}</p>
         </div>
         <div class="bottom-row">
+            <h3>Most used units</h3>
             <!--3 últimas unidades usadas ngFor-->
-            <div class="unit" *ngFor="let unit of units">
-                <div class="left-column">
-                    <h4 routerLink="/unitView">{{unit.unitName}}</h4>
-                    <div class="unit-info">
-                        <p>Number of words: {{unit.words}}</p>
-                        <p>Language: {{unit.language}}</p>
+            <div class="units">
+                <div class="unit" *ngFor="let unit of units">
+                    <div class="left-column">
+                        <h4 [routerLink]="['/unitView', unit._id]">{{unit.unitname}}</h4>
+                        <div class="unit-info">
+                            <p>Number of words: {{unit.words.length}}</p>
+                            <p>Language: {{unit.language}}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="right-column">
-                    <div class="setting-button">
-                        <div class="space"></div>
-                        <button mat-icon-button [matMenuTriggerFor]="unitMenu">
-                            <mat-icon>more_horiz</mat-icon>
-                        </button>
-                        <mat-menu #unitMenu="matMenu">
-                            <button mat-menu-item>
-                                <mat-icon>edit</mat-icon>
-                                <span>Edit unit</span>
+                    <div class="right-column">
+                        <div class="setting-button">
+                            <div class="space"></div>
+                            <button mat-icon-button [matMenuTriggerFor]="unitMenu">
+                                <mat-icon>more_horiz</mat-icon>
                             </button>
-                            <button mat-menu-item > <!--(click)="deleteUnit(unit.id)"-->
-                                <mat-icon>delete</mat-icon>
-                                <span>Delete unit</span>
-                            </button>
-                        </mat-menu>
+                            <mat-menu #unitMenu="matMenu">
+                                <button mat-menu-item>
+                                    <mat-icon>edit</mat-icon>
+                                    <span>Edit unit</span>
+                                </button>
+                                <button mat-menu-item (click)="deleteUnit(unit._id)">
+                                    <mat-icon>delete</mat-icon>
+                                    <span>Delete unit</span>
+                                </button>
+                            </mat-menu>
+                        </div>
                     </div>
                 </div>
             </div>

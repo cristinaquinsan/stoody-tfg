@@ -9,12 +9,12 @@
         </div>
         <div class="units">
             <!--ngFor unit from units by id-->
-            <div class="unit">
+            <div class="unit" *ngFor="let unit of units">
                 <div class="left-column">
-                    <h4 routerLink="/unitView">Name of the unit</h4>
+                    <h4 [routerLink]="['/unitView', unit._id ]">{{unit.unitname}}</h4>
                     <div class="unit-info">
-                        <p>Number of words: 34</p>
-                        <p>Language: English</p>
+                        <p>Number of words: {{unit.words.length}}</p>
+                        <p>Language: {{unit.language}}</p>
                     </div>
                 </div>
                 <div class="right-column">

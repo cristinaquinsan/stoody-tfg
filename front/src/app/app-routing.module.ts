@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'myLanguages', component: LanguageListComponent},
   { path: 'newUnit', component: UnitCreationComponent},
   { path: 'studyZone', component: StudyZoneComponent},
-  { path: 'unitView', component: UnitViewComponent}
+  { path: 'unitView/:unitId', component: UnitViewComponent}
 ];
 
 @NgModule({
