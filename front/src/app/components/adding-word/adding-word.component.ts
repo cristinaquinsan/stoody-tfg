@@ -22,7 +22,7 @@ export class AddingWordComponent implements OnInit {
   addWord(form):void{
     console.log(form.value);
     this.words.push(form.value);
-    console.log(this.words)
+    console.log(this.words);
     //this.getWords();
   }
 

@@ -5,7 +5,7 @@ const { Word } = require('./word.model');
 
 module.exports.getUnits = (req, res) => {
     Unit.find({
-        _username: req.body.username
+        _username: req.params.username
     }).then((units) => {
         return res.send(units);
     }).catch((e) => {

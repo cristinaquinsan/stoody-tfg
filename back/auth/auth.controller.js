@@ -21,7 +21,7 @@ exports.createUser = (req, res) => {
         const expiresIn = 24 * 60 * 60;
         const accessToken = jwt.sign({ id: user.id }, SECRET_KEY, { expiresIn: expiresIn });
         const dataUser = {
-            name: user.name,
+            username: user.username,
             email: user.email,
             motherlang: user.motherlang,
             studlangs: user.studlangs,

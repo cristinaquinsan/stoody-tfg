@@ -13,9 +13,10 @@ export class LoginComponent implements OnInit {
   hide = true;
   email = new FormControl('', [Validators.required, Validators.email]);
   constructor(private router: Router, private authService: AuthService) { }
-
+  //username = this.authService.username;
   ngOnInit(): void {
     if(this.authService.isLoggedIn===true){
+      //this.router.navigateByUrl(`/mainPage/${this.username}`);
       this.router.navigateByUrl('/mainPage');
     }
   }
