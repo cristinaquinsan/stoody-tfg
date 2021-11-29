@@ -65,10 +65,6 @@ export class AuthService {
     return this.token;
   }
 
-  private getUsername():string{
-    return this.username;
-  }
-
   getLang() {
     return this.userslanguages;
   }

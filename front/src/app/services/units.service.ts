@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UnitI } from '../models/unit';
-
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,23 +13,48 @@ export class UnitsService {
 
   /** CRUD Units methods */
 
-  getUnits(username){
-    return this.httpClient.get(`${this.AUTH_SERVER}/units`, username);
+  getUnits(username: any): Observable<any>{
+    return this.httpClient.get(`${this.AUTH_SERVER}/units/${username}`)
+    .pipe(
+      catchError(this.errorMgmt)
+    );
   }
 
-  getUnit(unitid){
-    return this.httpClient.get(`${this.AUTH_SERVER}/units/${unitid}`);
+  getUnit(unitid: any): Observable<any>{
+    return this.httpClient.get(`${this.AUTH_SERVER}/unit/${unitid}`)
+    .pipe(
+      map((res: any) => {
+        return res || {}
+      }),
+      catchError(this.errorMgmt)
+    );
   }
   
-  newUnit(unit: UnitI){
+  newUnit(unit: UnitI): Observable<any>{
     return this.httpClient.post(`${this.AUTH_SERVER}/units`, unit)
+    .pipe(
+      catchError(this.errorMgmt)
+    );
   }
 
   /*editUnit(unit: UnitI){
     return this.httpClient.post(`${this.AUTH_SERVER}/units`, unit)
   }*/
 
-  deleteUnit(unitid){
+  deleteUnit(unitid): Observable<any>{
     return this.httpClient.delete(`${this.AUTH_SERVER}/units/${unitid}`)
+    .pipe(
+      catchError(this.errorMgmt)
+    );
+  }
+
+  errorMgmt(error: HttpErrorResponse) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      errorMessage = error.error.message;
+    } else {
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(errorMessage);
   }
 }

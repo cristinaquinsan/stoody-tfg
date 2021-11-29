@@ -26,7 +26,6 @@ const userSchema = new Schema({
         type: Array,
         required: true
     },
-    //decks:{}
 }, {
     timestamps: true
 });

@@ -8,7 +8,6 @@
             </button>
         </div>
         <div class="units">
-            <!--ngFor unit from units by id-->
             <div class="unit" *ngFor="let unit of units">
                 <div class="left-column">
                     <h4 [routerLink]="['/unitView', unit._id ]">{{unit.unitname}}</h4>

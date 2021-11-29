@@ -15,11 +15,12 @@ export class SignupComponent implements OnInit {
   motherlang = new FormControl();
   studlangs = new FormControl('', Validators.required);
   languageList: string[] = ['Mandarin Chinese', 'Spanish', 'English','German', 'Portugesse', 'Arabic', 'Russian', 'Japanese', 'Korean'];
+  username;
   constructor(private router: Router, private authService: AuthService) { }
-
   ngOnInit(): void {
     if(this.authService.isLoggedIn===true){
-      this.router.navigateByUrl('/mainPage');
+      this.username = this.authService.username;
+      this.router.navigateByUrl(`/mainPage/${this.username}`);
     }
   }
 
@@ -35,7 +36,8 @@ export class SignupComponent implements OnInit {
     console.log(form.value);
     this.authService.signup(form.value).subscribe(res => {
       this.authService.isLoggedIn = true;
-      this.router.navigateByUrl('/mainPage');
+      this.username = this.authService.username;
+      this.router.navigateByUrl(`/mainPage/${this.username}`);
     })
   }
 

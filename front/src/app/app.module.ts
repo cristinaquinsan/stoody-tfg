@@ -20,7 +20,6 @@ import { StudyZoneComponent } from './components/study-zone/study-zone.component
 import { UnitCreationComponent } from './components/unit-creation/unit-creation.component';
 import { ProfileSettingsComponent } from './components/settings/profile-settings/profile-settings.component';
 import { UnitViewComponent } from './components/unit-view/unit-view.component';
-import { AddingWordComponent } from './components/adding-word/adding-word.component';
 
 /** ANGULAR MATERIAL */
 
@@ -34,6 +33,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table'
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -50,7 +50,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     UnitCreationComponent,
     ProfileSettingsComponent,
     UnitViewComponent,
-    AddingWordComponent
   ],
   imports: [
     BrowserModule,
@@ -70,6 +69,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSelectModule,
     MatTableModule,
     MatTooltipModule,
+    MatCardModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

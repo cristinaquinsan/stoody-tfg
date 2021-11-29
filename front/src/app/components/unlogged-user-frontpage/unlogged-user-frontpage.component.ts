@@ -10,10 +10,11 @@ import { AuthService } from 'src/app/services/auth.service';
 export class UnloggedUserFrontpageComponent implements OnInit {
 
   constructor(private router: Router, private authService: AuthService) { }
-
+  username;
   ngOnInit(): void {
     if(this.authService.isLoggedIn===true){
-      this.router.navigateByUrl('/mainPage');
+      this.username = this.authService.username;
+      this.router.navigateByUrl(`/mainPage/${this.username}`);
     }
   }
 

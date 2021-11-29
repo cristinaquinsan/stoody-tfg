@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: '', component: UnloggedUserFrontpageComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'mainPage', component: LoggedUserFrontpageComponent },
+  { path: 'mainPage/:username', component: LoggedUserFrontpageComponent },
   { path: 'myUnits', component: UnitListComponent},
   { path: 'myLanguages', component: LanguageListComponent},
   { path: 'newUnit', component: UnitCreationComponent},

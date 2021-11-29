@@ -33,3 +33,18 @@
 .margin5{
     margin: 0px 5px;
 }
+
+.controllers-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+  
+.example-button-row button,
+.example-button-row a {
+    margin-right: 8px;
+}
+  
+table {
+    width: 100%;
+}
+  

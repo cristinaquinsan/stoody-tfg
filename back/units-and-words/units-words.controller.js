@@ -5,22 +5,20 @@ const { Word } = require('./word.model');
 
 module.exports.getUnits = (req, res) => {
     Unit.find({
-        _username: req.params.username
+        username: req.params.username
     }).then((units) => {
         return res.send(units);
     }).catch((e) => {
-        console.log(e);
         return res.status(500).send("Server error + ", e);
     })
 }
 
 module.exports.viewUnit = (req, res) => {
     Unit.findOne({
-        _unitId: req.params.id
+        _id: req.params.id
     }).then((unit) => {
         return res.send(unit);
     }).catch((e) => {
-        console.log(e);
         return res.status(500).send("Server error + ", e);
     })
 
@@ -34,9 +32,8 @@ module.exports.newUnit = (req, res) => {
         words: req.body.words
     }
 
-    Unit.create(newUnit, (err, unit) =>{
+    Unit.create(newUnit, (err, unit) => {
         if (err) {
-            console.log(err); 
             return res.status(500).send("Server error + ", err);
         }
         const dataUnit = {
@@ -47,15 +44,16 @@ module.exports.newUnit = (req, res) => {
         }
         res.send(dataUnit);
     })
-    
+
 }
 
-/*module.exports.editUnit = (req, res) => {
-    Unit.findByIdAndUpdate({ 
-        _id:req.params.id, 
-        _username: req.body.username
-    }, $set: req.body)
-}*/
+module.exports.editUnit = (req, res) => {
+    Unit.findByIdAndUpdate({
+        _id: req.params.id
+    }, { $set: req.body }, (data) => {
+        return res.send(data);
+    });
+}
 
 module.exports.deleteUnit = (req, res) => {
     Unit.findByIdAndDelete({

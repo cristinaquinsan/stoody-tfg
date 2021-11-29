@@ -13,11 +13,11 @@ export class LoginComponent implements OnInit {
   hide = true;
   email = new FormControl('', [Validators.required, Validators.email]);
   constructor(private router: Router, private authService: AuthService) { }
-  //username = this.authService.username;
+  username;
   ngOnInit(): void {
     if(this.authService.isLoggedIn===true){
-      //this.router.navigateByUrl(`/mainPage/${this.username}`);
-      this.router.navigateByUrl('/mainPage');
+      this.username = this.authService.username;
+      this.router.navigateByUrl(`/mainPage/${this.username}`);
     }
   }
 
@@ -33,7 +33,8 @@ export class LoginComponent implements OnInit {
     console.log(form.value);
     this.authService.login(form.value).subscribe(res => {
       this.authService.isLoggedIn = true;
-      this.router.navigateByUrl('/mainPage');
+      this.username = this.authService.username;
+      this.router.navigateByUrl(`/mainPage/${this.username}`);
     })
   }
 
