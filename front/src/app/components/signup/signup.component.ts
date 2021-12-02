@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { Component, OnInit, NgZone } from '@angular/core';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { UserI } from '../../models/user';
 
 @Component({
   selector: 'app-signup',
@@ -11,35 +10,41 @@ import { UserI } from '../../models/user';
 })
 export class SignupComponent implements OnInit {
   hide = true;
-  email = new FormControl('', [Validators.required, Validators.email]);
-  motherlang = new FormControl();
-  studlangs = new FormControl('', Validators.required);
-  languageList: string[] = ['Mandarin Chinese', 'Spanish', 'English','German', 'Portugesse', 'Arabic', 'Russian', 'Japanese', 'Korean'];
+  userForm!: FormGroup;
+  languageList: string[] = ['Mandarin Chinese', 'Spanish', 'English', 'German', 'Portugesse', 'Arabic', 'Russian', 'Japanese', 'Korean'];
   username;
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService, public fb: FormBuilder, private ngZone: NgZone) { }
+
   ngOnInit(): void {
-    if(this.authService.isLoggedIn===true){
+    if (this.authService.isLoggedIn === true) {
       this.username = this.authService.username;
       this.router.navigateByUrl(`/mainPage/${this.username}`);
     }
+    this.submitUserForm();
   }
 
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
+  submitUserForm() {
+    this.userForm = this.fb.group({
+      username: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      passwd: ['', [Validators.required]],
+      motherlang: ['', []],
+      studlangs: ['', []]
+    });
+  }
+
+  onSignUp(): void {
+    if (this.userForm.valid) {
+      this.authService.signup(this.userForm.value).subscribe(res => {
+        this.authService.isLoggedIn = true;
+        this.username = this.authService.username;
+        this.router.navigateByUrl(`/mainPage/${this.username}`);
+      })
     }
-
-    return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
-  onSignUp(form): void{
-    console.log(form.value);
-    this.authService.signup(form.value).subscribe(res => {
-      this.authService.isLoggedIn = true;
-      this.username = this.authService.username;
-      this.router.navigateByUrl(`/mainPage/${this.username}`);
-    })
-  }
-
+  public handleError = (controlName: string, errorName: string) => {
+    return this.userForm.controls[controlName].hasError(errorName);
+  };
 
 }

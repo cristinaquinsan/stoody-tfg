@@ -2,34 +2,58 @@
     <div class="space"></div>
     <div class="container">
         <h3 class="kiwi center">Sign Up</h3>
-        <form class="flexForm" #signupForm="ngForm" (ngSubmit)="onSignUp(signupForm)">
+        <form class="flexForm" [formGroup]="userForm" (ngSubmit)="onSignUp()" #resetSignupForm="ngForm" novalidate>
             <div class="formData">
                 <div class="fillform">
                     <label class="kiwi">Account Information</label>
                     <mat-divider></mat-divider>
+
                     <mat-label class="margin kiwi">
                         <mat-icon inline=true>face</mat-icon> Username
                     </mat-label>
                     <mat-form-field class="textform" appearance="fill">
-                        <input matInput name="username" ngModel required>
+                        <input matInput formControlName="username" ngModel minlength="3" required>
+                        <mat-error *ngIf="handleError('username', 'required')">
+                            You must write an <strong>username</strong>
+                        </mat-error>
+                        <mat-error *ngIf="handleError('username', 'minlength')">
+                            It must have at least <strong>3 characters</strong>
+                        </mat-error>
                     </mat-form-field>
                     <mat-label class="margin kiwi">
                         <mat-icon inline=true>email</mat-icon> Email
                     </mat-label>
                     <mat-form-field class="textform" appearance="fill">
-                        <input matInput name="email" ngModel required>
+                        <input matInput formControlName="email" ngModel minlength="6"
+                            pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required>
+                        <mat-error *ngIf="handleError('email', 'required')">
+                            You must write an <strong>email</strong>
+                        </mat-error>
+                        <mat-error *ngIf="handleError('email', 'minlength')">
+                            It must have at least <strong>6 characters</strong>
+                        </mat-error>
+                        <mat-error *ngIf="handleError('email', 'pattern')">
+                            The email doesn't follow the pattern of an email.
+                        </mat-error>
                     </mat-form-field>
                     <mat-label class="margin kiwi">
                         <mat-icon inline=true>password</mat-icon> Password
                     </mat-label>
                     <mat-form-field class="textform" appearance="fill">
-                        <input matInput type="password" name="passwd" ngModel required>
-                    </mat-form-field>
-                    <mat-label class="margin kiwi">
-                        <mat-icon inline=true>password</mat-icon> Repeat password
-                    </mat-label>
-                    <mat-form-field class="textform" appearance="fill">
-                        <input matInput type="password" name="vPasswd" required>
+                        <input matInput type="password" formControlName="passwd" ngModel minlength="8" maxlength="16"
+                            pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$" required>
+                        <mat-error *ngIf="handleError('passwd', 'required')">
+                            You must write a <strong>password</strong>
+                        </mat-error>
+                        <mat-error *ngIf="handleError('passwd', 'minlength')">
+                            It must contain at least <strong>8 characters</strong>
+                        </mat-error>
+                        <mat-error *ngIf="handleError('passwd', 'maxlength')">
+                            It can't contain more than <strong>16 characters</strong>
+                        </mat-error>
+                        <mat-error *ngIf="handleError('passwd', 'pattern')">
+                            It must contain at least: 1 upper and lower case, a digit, and no spaces
+                        </mat-error>
                     </mat-form-field>
                 </div>
                 <div class="space"></div>
@@ -43,7 +67,9 @@
                                 {{motherlang}}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="motherlang.hasError('required')">Please choose a mother tongue</mat-error>
+                        <mat-error *ngIf="handleError('motherlang', 'required')">
+                            Please choose a mother tongue
+                        </mat-error>
                     </mat-form-field>
                     <mat-label class="kiwi">Choose the language(s) you are studying.</mat-label>
                     <mat-form-field appearance="fill">
@@ -51,6 +77,9 @@
                             <mat-option *ngFor="let studlangs of languageList" [value]="studlangs" class="kiwi">
                                 {{studlangs}}</mat-option>
                         </mat-select>
+                        <mat-error *ngIf="handleError('studlangs', 'required')">
+                            Choose the language(s) you are studying.
+                        </mat-error>
                     </mat-form-field>
                 </div>
             </div>
