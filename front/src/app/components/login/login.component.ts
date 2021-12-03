@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
   }
 
   onLogIn(form): void{
-    console.log(form.value);
     this.authService.login(form.value).subscribe(res => {
       this.authService.isLoggedIn = true;
       this.username = this.authService.username;

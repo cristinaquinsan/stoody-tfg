@@ -15,7 +15,6 @@ exports.createUser = (req, res) => {
     User.create(newUser, (err, user) => {
         if (err && err.code === 11000) return res.status(409).send('Email already exists');
         if (err) {
-            console.log(err); 
             return res.status(500).send("Server error");
         }
         const expiresIn = 24 * 60 * 60;
@@ -40,7 +39,6 @@ exports.loginUser = (req, res) => {
     }
     User.findOne({ email: userData.email }, (err, user) => {
         if (err) {
-            console.log(err); 
             return res.status(500).send("Server error");
         }
         if (!user) return res.status(409).send("Something is wrong");

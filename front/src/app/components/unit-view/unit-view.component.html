@@ -4,8 +4,16 @@
         <div class="top-row">
             <h3>{{unit.unitname}}</h3>
             <div class="buttons">
-                <button mat-raised-button color="primary" routerLink="/studyZone">Study this unit</button>
-                <button mat-raised-button color="primary">Fast test</button>
+                <button mat-raised-button color="primary" [routerLink]="['/studyZone', unit._id ]">Study this
+                    unit</button>
+                <button mat-raised-button color="primary" (click)="editUnit()">
+                    <mat-icon>edit</mat-icon>
+                    <span>Edit unit</span>
+                </button>
+                <button mat-raised-button color="primary" (click)="deleteUnit()">
+                    <mat-icon>delete</mat-icon>
+                    <span>Delete unit</span>
+                </button>
             </div>
 
             <div class="container" *ngIf="words.length > 0">

@@ -19,13 +19,15 @@ export class UnitViewComponent implements OnInit {
   words: WordI[] = [];
   displayedColumns: string[] = ['front', 'back', 'hint'];
   dataSource!: MatTableDataSource<WordI>;
+  id;
   
   ngOnInit(): void {
     if (this.authService.isLoggedIn === false) {
       this.router.navigateByUrl('/login');
     }
-    let id = this.route.snapshot.paramMap.get('unitId');
-    this.viewUnit(id);
+    this.unitId = this.route.snapshot.paramMap.get('id');
+    console.log(this.unitId)
+    this.viewUnit(this.unitId);
   }
 
   viewUnit(id){
@@ -34,6 +36,18 @@ export class UnitViewComponent implements OnInit {
       this.words = this.unit.words;
       this.dataSource = new MatTableDataSource<WordI>(this.words);
     })
+  }
+
+  editUnit() {
+    console.log(this.unitId);
+    this.router.navigateByUrl(`/updateUnit/${this.unitId}`);
+  }
+
+  deleteUnit() {
+    this.unitService.deleteUnit(this.unitId).subscribe((data) => {
+      console.log('Se ha eliminado la unidad', this.unitId);
+    });
+    this.router.navigateByUrl(`/myUnits`);
   }
 
 }

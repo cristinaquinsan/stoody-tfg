@@ -18,8 +18,8 @@ import { UnitListComponent } from './components/unit-list/unit-list.component';
 import { LanguageListComponent } from './components/language-list/language-list.component';
 import { StudyZoneComponent } from './components/study-zone/study-zone.component';
 import { UnitCreationComponent } from './components/unit-creation/unit-creation.component';
-import { ProfileSettingsComponent } from './components/settings/profile-settings/profile-settings.component';
 import { UnitViewComponent } from './components/unit-view/unit-view.component';
+import { UnitEditComponent } from './components/unit-edit/unit-edit.component';
 
 /** ANGULAR MATERIAL */
 
@@ -34,6 +34,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table'
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
+import { MatTabsModule } from '@angular/material/tabs';
+
 
 @NgModule({
   declarations: [
@@ -48,8 +50,8 @@ import { MatCardModule } from '@angular/material/card';
     LanguageListComponent,
     StudyZoneComponent,
     UnitCreationComponent,
-    ProfileSettingsComponent,
     UnitViewComponent,
+    UnitEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,6 +72,7 @@ import { MatCardModule } from '@angular/material/card';
     MatTableModule,
     MatTooltipModule,
     MatCardModule,
+    MatTabsModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

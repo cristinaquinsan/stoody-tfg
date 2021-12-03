@@ -5,10 +5,10 @@
             <div class="person-icon" aria-label="User icon">
                 <mat-icon inline=true>person</mat-icon>
             </div>
-            <p> Welome to your page {{username}}</p>
+            <p> Welcome to your page {{username}}</p>
         </div>
         <div class="bottom-row">
-            <h3>Most used units</h3>
+            <h3>Last created units</h3>
             <div class="units">
                 <div class="unit" *ngFor="let unit of units">
                     <div class="left-column">
@@ -25,7 +25,7 @@
                                 <mat-icon>more_horiz</mat-icon>
                             </button>
                             <mat-menu #unitMenu="matMenu">
-                                <button mat-menu-item>
+                                <button mat-menu-item (click)="editUnit(unit._id)">
                                     <mat-icon>edit</mat-icon>
                                     <span>Edit unit</span>
                                 </button>

@@ -38,7 +38,7 @@ export class SignupComponent implements OnInit {
       this.authService.signup(this.userForm.value).subscribe(res => {
         this.authService.isLoggedIn = true;
         this.username = this.authService.username;
-        this.router.navigateByUrl(`/mainPage/${this.username}`);
+        this.ngZone.run(() => this.router.navigateByUrl(`/mainPage/${this.username}`));
       })
     }
   }

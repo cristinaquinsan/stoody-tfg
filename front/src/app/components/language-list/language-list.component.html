@@ -1,13 +1,54 @@
 <div class="langlist">
     <div class="space"></div>
     <div class="container">
-        <div class="languages">
-            
+        <mat-tab-group dynamicHeight (selectedTabChange)="getUnitsByLanguage($event.index)">
             <div class="language" *ngFor="let lang of langlist">
-                <!--imagen de la bandera + nombre del idioma-->
-                <p>{{lang}}</p>
+                <mat-tab label="Short tab">
+                    <ng-template mat-tab-label>
+                        <mat-icon class="example-tab-icon">book-reader</mat-icon>
+                        <p>{{lang}}</p>
+                    </ng-template>
+                    <div *ngFor="let unit of units">
+                        <div class="left-column">
+                            <h4> {{unit.unitname}} </h4>
+                            <div class="unit-info">
+                                <p>Number of words: {{unit.words.length}}</p>
+                                <p>Language: {{unit.language}}</p>
+                            </div>
+                        </div>
+
+                        <div class="right-column">
+                            <div class="study-buttons">
+                                <button mat-raised-button class="kiwi margin5" color="primary"
+                                    [routerLink]="['/studyZone', unit._id ]">Study this unit</button>
+                            </div>
+
+                            <div class="setting-button">
+                                <div class="space"></div>
+
+                                <button mat-icon-button [matMenuTriggerFor]="unitMenu">
+                                    <mat-icon>more_horiz</mat-icon>
+                                </button>
+
+                                <mat-menu #unitMenu="matMenu">
+                                    <button mat-menu-item (click)="editUnit(unit._id)">
+                                        <mat-icon>edit</mat-icon>
+                                        <span>Edit unit</span>
+                                    </button>
+
+                                    <button mat-menu-item (click)="deleteUnit(unit._id)">
+                                        <mat-icon>delete</mat-icon>
+                                        <span>Delete unit</span>
+                                    </button>
+                                </mat-menu>
+                            </div>
+                        </div>
+                        <mat-divider></mat-divider>
+                    </div>
+                </mat-tab>
             </div>
-        </div>
+        </mat-tab-group>
     </div>
+
     <div class="space"></div>
 </div>

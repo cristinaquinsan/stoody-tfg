@@ -28,4 +28,15 @@ export class UnitListComponent implements OnInit {
 
   }
 
+  deleteUnit(id) {
+    this.unitService.deleteUnit(id).subscribe(data => {
+      console.log("Se ha eliminado la unidad");
+      this.getUnits();
+    })
+  }
+
+  editUnit(id: any) {
+    this.router.navigateByUrl(`/updateUnit/${id}`);
+  }
+
 }

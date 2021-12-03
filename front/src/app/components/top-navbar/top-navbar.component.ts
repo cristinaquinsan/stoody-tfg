@@ -14,7 +14,6 @@ export class TopNavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("2.", this.isLoggedin);
     this.router.events.subscribe(event => {
         this.isLoggedin = this.authService.isLoggedIn;
     })

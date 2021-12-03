@@ -8,46 +8,55 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UnitsService {
-  AUTH_SERVER: string = 'http://localhost:3000';
+  SERVER: string = 'http://localhost:3000';
   constructor(private httpClient: HttpClient) { }
 
-  /** CRUD Units methods */
-
-  getUnits(username: any): Observable<any>{
-    return this.httpClient.get(`${this.AUTH_SERVER}/units/${username}`)
-    .pipe(
-      catchError(this.errorMgmt)
-    );
+  getUnits(username: any): Observable<any> {
+    return this.httpClient.get(`${this.SERVER}/units/${username}`)
+      .pipe(
+        catchError(this.errorMgmt)
+      );
   }
 
-  getUnit(unitid: any): Observable<any>{
-    return this.httpClient.get(`${this.AUTH_SERVER}/unit/${unitid}`)
-    .pipe(
-      map((res: any) => {
-        return res || {}
-      }),
-      catchError(this.errorMgmt)
-    );
+  getUnitsByLanguage(username: string, language: any): Observable<any> {
+    return this.httpClient
+      .get(`${this.SERVER}/myLanguages/${username}/${language}`)
+      .pipe(catchError(this.errorMgmt));
   }
+
+  getUnit(unitid: any): Observable<any> {
+    return this.httpClient.get(`${this.SERVER}/unit/${unitid}`)
+      .pipe(
+        map((res: any) => {
+          return res || {}
+        }),
+        catchError(this.errorMgmt)
+      );
+  }
+
+  newUnit(unit: UnitI): Observable<any> {
+    return this.httpClient.post(`${this.SERVER}/units`, unit)
+      .pipe(
+        catchError(this.errorMgmt)
+      );
+  }
+
+  editUnit(unit: UnitI, unitId: any): Observable<any> {
+    return this.httpClient.put(`${this.SERVER}/updateUnit/${unitId}`, unit);
+  }
+
+  updateFeedback(unit: UnitI): Observable<any> {
+    return this.httpClient.put(`${this.SERVER}/updateFeedback`, unit);
+  }
+
+  deleteUnit(unitid): Observable<any> {
+    return this.httpClient.delete(`${this.SERVER}/units/${unitid}`)
+      .pipe(
+        catchError(this.errorMgmt)
+      );
+  }
+
   
-  newUnit(unit: UnitI): Observable<any>{
-    return this.httpClient.post(`${this.AUTH_SERVER}/units`, unit)
-    .pipe(
-      catchError(this.errorMgmt)
-    );
-  }
-
-  /*editUnit(unit: UnitI){
-    return this.httpClient.post(`${this.AUTH_SERVER}/units`, unit)
-  }*/
-
-  deleteUnit(unitid): Observable<any>{
-    return this.httpClient.delete(`${this.AUTH_SERVER}/units/${unitid}`)
-    .pipe(
-      catchError(this.errorMgmt)
-    );
-  }
-
   errorMgmt(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
