@@ -13,12 +13,19 @@
 
 .worldimage{
     max-height: 300px;
+    
 }
 
 .flagsavailable{
     display:flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-evenly;
+}
+
+.flag-row{
+    display: flex;
+    justify-content: center;
 }
 
 .flag{
@@ -39,11 +46,11 @@
     border-radius: 5px;
 }*/
 
-.topsquare{
+.square{
     background:#E8E8E8;
 	width: 500px;
-	height: 200px;
-    margin-left: 25px;
+	
+    margin-left: 5px;
     margin-top: 30px;
     border-radius: 5px;
 
@@ -51,4 +58,8 @@
 
 .relative{
     position: relative;
+}
+
+.info{
+    padding: 0px 20px;
 }
